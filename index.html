@@ -1,212 +1,432 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Min første nettside</title>
+  <title>Pickup Market</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
+      background: #f5f7fb;
       color: #1f2937;
       line-height: 1.6;
     }
 
     header {
-      background: white;
-      padding: 20px 40px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      position: sticky;
-      top: 0;
-    }
-
-    nav {
+      background: #0f172a;
+      color: white;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    nav h2 {
-      color: #2563eb;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 20px;
+    header h1 {
+      font-size: 24px;
+      font-weight: 700;
     }
 
     nav a {
+      color: white;
       text-decoration: none;
-      color: #1f2937;
-      font-weight: bold;
+      margin-left: 18px;
+      font-size: 15px;
     }
 
     .hero {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: center;
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff 0%, #e8eefc 100%);
     }
 
-    .hero-text h1 {
+    .hero h2 {
       font-size: 42px;
-      margin-bottom: 20px;
-      color: #111827;
+      margin-bottom: 16px;
+      color: #0f172a;
     }
 
-    .hero-text p {
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 28px;
       font-size: 18px;
-      margin-bottom: 20px;
+      color: #475569;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
-      background: #2563eb;
+      background: #0f172a;
       color: white;
-      padding: 12px 22px;
+      padding: 13px 22px;
+      border: none;
       border-radius: 10px;
       text-decoration: none;
-      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: 600;
     }
 
-    .hero-box {
+    .btn.secondary {
       background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      text-align: center;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
     }
 
     .section {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px 40px;
+      max-width: 1150px;
+      margin: 34px auto;
+      padding: 0 20px;
     }
 
-    .section h2 {
+    .section h3 {
       font-size: 30px;
-      margin-bottom: 20px;
-      color: #111827;
+      margin-bottom: 18px;
+      color: #0f172a;
     }
 
-    .cards {
+    .section-intro {
+      color: #64748b;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .steps,
+    .stores,
+    .products,
+    .highlights {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 25px;
       border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      padding: 22px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
     }
 
-    .contact {
+    .card h4 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .card p {
+      color: #64748b;
+    }
+
+    .store-tag,
+    .price-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #0f172a;
+      background: #e2e8f0;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .product img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .pickup,
+    .contact,
+    .order-form {
       background: white;
-      padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .pickup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .order-form {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .order-form label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .order-form input,
+    .order-form textarea,
+    .order-form select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .order-form button {
+      margin-top: 20px;
+      width: 100%;
+      background: #0f172a;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .message {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #dcfce7;
+      color: #166534;
+      display: none;
     }
 
     footer {
+      background: #0f172a;
+      color: white;
       text-align: center;
-      padding: 30px;
-      margin-top: 40px;
-      color: #6b7280;
+      padding: 24px;
+      margin-top: 46px;
     }
 
     @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
+      .hero h2 {
+        font-size: 30px;
       }
 
       nav {
-        flex-direction: column;
-        gap: 15px;
+        margin-top: 12px;
+        width: 100%;
       }
 
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero-text h1 {
-        font-size: 32px;
+      nav a {
+        margin: 0 14px 0 0;
+        display: inline-block;
       }
     }
   </style>
 </head>
 <body>
   <header>
+    <h1>Pickup Market</h1>
     <nav>
-      <h2>MinSide</h2>
-      <ul>
-        <li><a href="#hjem">Hjem</a></li>
-        <li><a href="#tjenester">Tjenester</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
+      <a href="#home">Home</a>
+      <a href="#stores">Stores</a>
+      <a href="#products">Products</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero" id="hjem">
-    <div class="hero-text">
-      <h1>Velkommen til min første nettside</h1>
-      <p>Dette er en enkel og pen nettside laget med HTML og CSS. Du kan bruke den som start for din egen side.</p>
-      <a href="#kontakt" class="btn">Kontakt meg</a>
-    </div>
-    <div class="hero-box">
-      <h3>Enkel design</h3>
-      <p>Mobilvennlig, ryddig og lett å redigere.</p>
-    </div>
-  </section>
-
-  <section class="section" id="tjenester">
-    <h2>Mine tjenester</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Webdesign</h3>
-        <p>Enkle og moderne nettsider for små bedrifter og personlige prosjekter.</p>
-      </div>
-      <div class="card">
-        <h3>Responsive sider</h3>
-        <p>Nettsider som fungerer godt på både mobil, nettbrett og PC.</p>
-      </div>
-      <div class="card">
-        <h3>Enkel kode</h3>
-        <p>Ryddig HTML og CSS som er lett å forstå for nybegynnere.</p>
-      </div>
+  <section class="hero" id="home">
+    <h2>Local stores. One simple pickup point.</h2>
+    <p>
+      Shops list their products on the website, customers place orders online,
+      and we collect and deliver everything to a fixed pickup location for easy collection.
+    </p>
+    <div class="buttons">
+      <a class="btn" href="#products">Browse Products</a>
+      <a class="btn secondary" href="#order">Place an Order</a>
     </div>
   </section>
 
-  <section class="section" id="kontakt">
-    <h2>Kontakt</h2>
-    <div class="contact">
-      <p><strong>Navn:</strong> Ditt navn</p>
-      <p><strong>E-post:</strong> din@email.com</p>
-      <p><strong>Telefon:</strong> 123 45 678</p>
+  <section class="section">
+    <h3>Why customers use it</h3>
+    <p class="section-intro">
+      A simple local ordering platform for everyday products, small shops, and convenient pickup.
+    </p>
+    <div class="highlights">
+      <div class="card">
+        <h4>Easy ordering</h4>
+        <p>Customers can browse products and place an order in a few simple steps.</p>
+      </div>
+      <div class="card">
+        <h4>Trusted local stores</h4>
+        <p>Partner stores can list products directly on the platform.</p>
+      </div>
+      <div class="card">
+        <h4>One pickup location</h4>
+        <p>Orders are delivered to a fixed collection point to keep logistics simple.</p>
+      </div>
     </div>
+  </section>
+
+  <section class="section">
+    <h3>How it works</h3>
+    <div class="steps">
+      <div class="card">
+        <h4>1. Stores upload products</h4>
+        <p>Local businesses list products, prices, and availability.</p>
+      </div>
+      <div class="card">
+        <h4>2. Customers place orders</h4>
+        <p>Customers choose products and submit their order online.</p>
+      </div>
+      <div class="card">
+        <h4>3. We collect and transport</h4>
+        <p>Orders are picked up from the stores and moved to the pickup point.</p>
+      </div>
+      <div class="card">
+        <h4>4. Customer collects</h4>
+        <p>The customer picks up the order from the fixed delivery location.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stores">
+    <h3>Featured Stores</h3>
+    <p class="section-intro">
+      A few example local partners on the platform.
+    </p>
+    <div class="stores">
+      <div class="card">
+        <h4>Green Market</h4>
+        <p>Fresh fruit, vegetables, and everyday essentials.</p>
+        <span class="store-tag">Local Grocery</span>
+      </div>
+      <div class="card">
+        <h4>Oslo Bakery</h4>
+        <p>Fresh bread, cakes, and pastries prepared daily.</p>
+        <span class="store-tag">Bakery</span>
+      </div>
+      <div class="card">
+        <h4>Coffee Corner</h4>
+        <p>Packaged coffee, beans, and local specialty drinks.</p>
+        <span class="store-tag">Cafe</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <h3>Featured Products</h3>
+    <p class="section-intro">
+      Customers can browse available products and place orders for pickup.
+    </p>
+    <div class="products">
+      <div class="card product">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Fruit box" />
+        <h4>Fruit Box</h4>
+        <p>Fresh mixed fruit prepared by Green Market.</p>
+        <span class="price-tag">199 NOK</span>
+        <p class="store-tag">Green Market</p>
+      </div>
+
+      <div class="card product">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Bread and pastries" />
+        <h4>Bread & Pastries</h4>
+        <p>Freshly baked bread and pastries from Oslo Bakery.</p>
+        <span class="price-tag">89 NOK</span>
+        <p class="store-tag">Oslo Bakery</p>
+      </div>
+
+      <div class="card product">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Coffee" />
+        <h4>Premium Coffee</h4>
+        <p>Fresh roasted coffee from a local independent shop.</p>
+        <span class="price-tag">149 NOK</span>
+        <p class="store-tag">Coffee Corner</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Pickup Information</h3>
+    <div class="pickup pickup-grid">
+      <div>
+        <h4>Pickup Address</h4>
+        <p>Oslo City Centre, Example Street 10</p>
+      </div>
+      <div>
+        <h4>Opening Hours</h4>
+        <p>Monday to Friday, 10:00 - 18:00</p>
+      </div>
+      <div>
+        <h4>Collection Process</h4>
+        <p>Customers receive confirmation and collect their order at the fixed point.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="order">
+    <h3>Place an Order</h3>
+    <p class="section-intro" style="text-align:center; margin-left:auto; margin-right:auto;">
+      This is a simple demo form for the first version of the platform.
+    </p>
+    <form class="order-form" id="orderForm">
+      <label for="product">Select product</label>
+      <select id="product" required>
+        <option value="">Choose a product</option>
+        <option>Fruit Box - 199 NOK</option>
+        <option>Bread & Pastries - 89 NOK</option>
+        <option>Premium Coffee - 149 NOK</option>
+      </select>
+
+      <label for="name">Full name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required />
+
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" placeholder="Enter your phone number" required />
+
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" min="1" value="1" required />
+
+      <label for="comment">Comment</label>
+      <textarea id="comment" rows="4" placeholder="Optional extra information"></textarea>
+
+      <button type="submit">Submit Order</button>
+      <div class="message" id="successMessage">Your order has been submitted.</div>
+    </form>
+  </section>
+
+  <section class="section contact" id="contact">
+    <h3>Contact</h3>
+    <p><strong>Phone:</strong> +47 99 99 99 99</p>
+    <p><strong>Email:</strong> contact@pickupmarket.com</p>
+    <p><strong>Pickup Address:</strong> Oslo City Centre, Example Street 10</p>
   </section>
 
   <footer>
-    <p>© 2026 MinSide. Alle rettigheter reservert.</p>
+    <p>&copy; 2026 Pickup Market. All rights reserved.</p>
   </footer>
+
+  <script>
+    const orderForm = document.getElementById('orderForm');
+    const successMessage = document.getElementById('successMessage');
+
+    orderForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      successMessage.style.display = 'block';
+      orderForm.reset();
+    });
+  </script>
 </body>
 </html>
